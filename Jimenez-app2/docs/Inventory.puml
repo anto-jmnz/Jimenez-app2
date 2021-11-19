@@ -1,11 +1,80 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
+class InventoryManagerApplication {
+    + start()
+    + main()
+    '\ What is necessary to run JavaFX '\
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+}
+class Controller{
+    - FileChooser= new FileChooser();
+    - ObservableList<Item> TodoList= FXCollections.observableArrayList();
+    - LocalDate localDate();
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+    + initialize(URL location, ResourceBundle resources)
+    + Add1
+    + addHelper(String item, String Value,LocalDate SerialNum)
+    + Clear1
+    + Edit1
+    + HelpButton
+    + Remove1
+    + RemoveHelper(String item, String Value,LocalDate SerialNum)
+    + SaveButton
+    + LoadButton
+    + ErrorMessage
+
+ '\ Buttons '\
+    * Remove1 (ActionEvent)
+    * Clear1(actionEvent)
+    * void Edit1(actionEvent)
+    * void HelpButton(actionEvent)
+    * void Remove1(actionEvent)
+    * public void SaveButton(actionEvent)
+    * public void LoadButton(actionEvent)
+
+}
+
+class Help{
+    * TextArea HelpText
+
+    - initialize(URL url, ResourceBundle resources)
+    - private void LoadHELP()
+    - private String helpPageContent()
+
+}
+
+class Item{
+    - String Item
+    - private String Value
+    - private String SerialNum
+
+    + public Item(String item, String serialNum, String costValue);
+    + public Item();
+    + getItem_Name();
+    + setItem_Name(item_Name);
+    + public String getValue()
+    + public void setValue(String Value)
+    + public String getSerialNum()
+    + public String setSerialNum(String serialNum)
+
+}
+
+class Edit{
+    - TextField Item_Field
+    - TextField Cost_Field
+    - TextField SerialNum_Field
+    - Item item
+
+    + initialize
+    + saveItem
+    + itemName
+    + Valueget
+    + SerialNumget
+    + ErrorMessage
+}
+InventoryManagerApplication--o Controller
+InventoryManagerApplication--o Item
+InventoryManagerApplication--o Edit
+InventoryManagerApplication--o Help
 @enduml

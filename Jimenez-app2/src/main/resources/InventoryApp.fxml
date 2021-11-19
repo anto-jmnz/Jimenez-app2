@@ -1,14 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="529.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InventoryManagementApplication">
+   <children>
+      <TableView fx:id="Inventory" layoutX="37.0" layoutY="139.0" prefHeight="374.0" prefWidth="440.0">
+        <columns>
+          <TableColumn fx:id="Item_Name" prefWidth="138.0" text="Item Name" />
+          <TableColumn fx:id="Value" prefWidth="135.0" text="Cost Value" />
+            <TableColumn fx:id="SerialNum" prefWidth="166.0" text="Serial Number" />
+        </columns>
+      </TableView>
+      <Button fx:id="Add" layoutX="503.0" layoutY="386.0" mnemonicParsing="false" onAction="#Add1" prefHeight="35.0" prefWidth="84.0" text="Add" textFill="#288da1">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="Remove" layoutX="604.0" layoutY="386.0" mnemonicParsing="false" onAction="#Remove1" prefHeight="35.0" prefWidth="91.0" text="Remove" textFill="#288da1">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="Clear" layoutX="706.0" layoutY="386.0" mnemonicParsing="false" onAction="#Clear1" prefHeight="35.0" prefWidth="91.0" text="Clear List" textFill="#288da1">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="Edit" layoutX="604.0" layoutY="443.0" mnemonicParsing="false" onAction="#Edit1" prefHeight="35.0" prefWidth="106.0" text="Edit" textFill="#288da1" />
+      <ScrollBar layoutX="476.0" layoutY="140.0" orientation="VERTICAL" prefHeight="374.0" prefWidth="14.0" />
+      <Label layoutX="37.0" layoutY="50.0" prefHeight="56.0" prefWidth="760.0" text="                   Inventory Application" textAlignment="RIGHT" textFill="#53d132">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="41.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Item_Field" layoutX="512.0" layoutY="183.0" prefHeight="25.0" prefWidth="234.0" />
+      <TextField fx:id="SerialNum_Field" layoutX="512.0" layoutY="327.0" prefHeight="25.0" prefWidth="234.0" />
+      <Label layoutX="512.0" layoutY="148.0" prefHeight="35.0" prefWidth="177.0" text="Name of the Item:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="514.0" layoutY="292.0" prefHeight="35.0" prefWidth="147.0" text="Serial Number: ">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Cost_Field" layoutX="512.0" layoutY="252.0" prefHeight="25.0" prefWidth="234.0" />
+      <Label layoutX="512.0" layoutY="217.0" prefHeight="35.0" prefWidth="177.0" text="Cost Value:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <MenuBar fx:id="File" layoutY="2.0" prefHeight="25.0" prefWidth="834.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#SaveButton" text="Save Inventory" />
+                  <MenuItem mnemonicParsing="false" onAction="#LoadButton" text="Load Inventory" />
+            </items>
+          </Menu>
+        </menus>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </MenuBar>
+      <Button fx:id="Help" layoutX="779.0" layoutY="478.0" mnemonicParsing="false" onAction="#HelpButton" prefHeight="35.0" prefWidth="36.0" text="?" textFill="#288da1">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
