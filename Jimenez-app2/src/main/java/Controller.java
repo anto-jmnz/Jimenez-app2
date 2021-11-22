@@ -395,7 +395,7 @@ public class Controller implements Initializable {
         else if(fileChooser.getSelectedExtensionFilter().getDescription().equals("JSON")){
             InventoryList.clear();
             Gson gson = new Gson();
-            Helper parse = gson.fromJson(reader,Helper.class); //Here is the problem
+            Helper parse = gson.fromJson(reader,Helper.class); 
             System.out.println(parse.getDescriptor().size());
 
         }//Working
@@ -453,7 +453,6 @@ public class Controller implements Initializable {
         }
         Item_Search.clear();
         return;
-        //Now we have to find an option to get back the actual view. Better like this
     }
 
 }
