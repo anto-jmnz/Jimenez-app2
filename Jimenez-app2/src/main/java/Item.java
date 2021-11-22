@@ -1,14 +1,19 @@
+/*
+ *  UCF COP3330 Fall 2021 Application Assignment 2 Solution
+ *  Copyright 2021 Antonia Jimenez
+ */
+
 import javafx.scene.control.Button;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Item implements Serializable {
-    String Item_Name;
+    private String Item_Name;
     private String Value;
     private String SerialNum;
 
-    public Item(String item, String serialNum, String costValue) {
+    public Item(String item, String costValue, String serialNum) {
         this.Item_Name= item;
         this.Value = costValue;
         this.SerialNum = serialNum;
@@ -42,9 +47,6 @@ public class Item implements Serializable {
         SerialNum = serialNum;
     }
 
-    @Override
-    public String toString() {
-        // Convert everything to a string for printing purposes
-    }
+
 
 }

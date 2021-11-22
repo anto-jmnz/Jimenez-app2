@@ -1,3 +1,4 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +19,7 @@ public void start(Stage stage)throws Exception{
         Parent root=FXMLLoader.load(url);
         Scene scene=new Scene(root);
 
-        stage.setTitle("To Do App");
+        stage.setTitle("Inventory App");
         stage.setScene(scene);
         stage.show();
         }

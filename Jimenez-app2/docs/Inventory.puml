@@ -14,7 +14,6 @@ class Controller{
 
     + initialize(URL location, ResourceBundle resources)
     + Add1
-    + addHelper(String item, String Value,LocalDate SerialNum)
     + Clear1
     + Edit1
     + HelpButton
@@ -23,6 +22,7 @@ class Controller{
     + SaveButton
     + LoadButton
     + ErrorMessage
+    + RepetitionChecker
 
  '\ Buttons '\
     * Remove1 (ActionEvent)
@@ -41,6 +41,15 @@ class Help{
     - initialize(URL url, ResourceBundle resources)
     - private void LoadHELP()
     - private String helpPageContent()
+
+}
+
+class Helper{
+    * private ArrayList<Item> i;
+    * public ArrayList<Item> getDescriptor();
+
+    - public class Helper();
+    - public void setDescriptor(ArrayList<Item> Inventory);
 
 }
 
@@ -77,4 +86,5 @@ InventoryManagerApplication--o Controller
 InventoryManagerApplication--o Item
 InventoryManagerApplication--o Edit
 InventoryManagerApplication--o Help
+InventoryManagerApplication--o Helper
 @enduml
