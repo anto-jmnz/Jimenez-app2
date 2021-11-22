@@ -292,10 +292,10 @@ public class Controller implements Initializable {
                 BW.printf("<table align = center border = 1 style = background-color:#ffc0cb cellpadding = 5 cellspacing = 5>");
 
 
-                BW.printf("<tr><th><font size = 5 >Price</th><th><font size = 5 >Serial Number</th><th><font size = 5 >Name</th><tr>");
+                BW.printf("<tr><th><font size = 5 >Serial Number</th><th><font size = 5 >Cost</th><th><font size = 5 >Name</th><tr>");
                 for (int i = 0; i < InventoryList.size(); i++) {
 
-                    BW.printf("<tr><td><font size = 4>" + InventoryList.get(i).getValue() + "</td><td><font size = 4>" + InventoryList.get(i).getSerialNum() + "</td><td><font size = 4>" + InventoryList.get(i).getItem_Name() + "</td></tr>");
+                    BW.printf("<tr><td><font size = 4>" + InventoryList.get(i).getSerialNum() + "</td><td><font size = 4>" + InventoryList.get(i).getValue() + "</td><td><font size = 4>" + InventoryList.get(i).getItem_Name() + "</td></tr>");
 
                 }
                 BW.printf("</table>");
