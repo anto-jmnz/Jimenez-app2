@@ -35,7 +35,7 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="Edit" layoutX="604.0" layoutY="443.0" mnemonicParsing="false" onAction="#Edit1" prefHeight="35.0" prefWidth="106.0" text="Edit" textFill="#288da1" />
+      <Button layoutX="604.0" layoutY="443.0" mnemonicParsing="false" onAction="#Edit1" prefHeight="35.0" prefWidth="106.0" text="Edit" textFill="#288da1" />
       <ScrollBar layoutX="476.0" layoutY="175.0" orientation="VERTICAL" prefHeight="339.0" prefWidth="14.0" />
       <Label layoutX="37.0" layoutY="50.0" prefHeight="56.0" prefWidth="760.0" text="                   Inventory Application" textAlignment="RIGHT" textFill="#53d132">
          <font>

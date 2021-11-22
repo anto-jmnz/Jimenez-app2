@@ -101,35 +101,6 @@ public class Controller implements Initializable {
         Inventory.setItems(InventoryList);
         Inventory.refresh();
 
-        FilteredList<Item> filteredData = new FilteredList<>(InventoryList, b -> true);
-
-
-        Item_Search.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(inventory -> {
-
-
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (inventory.getItem_Name().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-                    return true;
-                }
-                else if (String.valueOf(inventory.getSerialNum()).indexOf(lowerCaseFilter)!=-1)
-                    return true;
-                else
-                    return false;
-            });
-        });
-
-        SortedList<Item> sortedData = new SortedList<>(filteredData);
-
-        sortedData.comparatorProperty().bind(Inventory.comparatorProperty());
-
-
-        Inventory.setItems(sortedData);
 
     }
 
@@ -210,44 +181,55 @@ public class Controller implements Initializable {
 
 
     @FXML
-    void Edit1(javafx.event.ActionEvent actionEvent) {
+    void Edit1(ActionEvent actionEvent) {
         // Function able to replace the old text with the new one once the selection is clicked
         //Display an error message once the user enters an existing serial number
         //Display an error message once the user enters an invalid item value
         //Display an error message once the user enters an invalid item name
+
         int index= Inventory.getSelectionModel().getSelectedIndex();
+        System.out.println(index);
+
         String modifiedName= Item_Field.getText();
         String modifiedCost = Cost_Field.getText();
         String modifiedSerial = SerialNum_Field.getText();
+
         Matcher matcher = pattern.matcher(modifiedSerial);
+
         if(Inventory.getSelectionModel().getSelectedItem()==null){
             ErrorMessage("Error", "Please select an item to modify");
-        }else{
-            if(modifiedName != InventoryList.get(index).getItem_Name()){
-                InventoryList.get(index).setItem_Name(modifiedName);
-            }
-            if(modifiedCost != InventoryList.get(index).getValue() && modifiedCost.matches("[0-9]") && Integer.parseInt(modifiedCost) >= 0){
-                InventoryList.get(index).setValue("$" + modifiedCost);
-            }
-            else if(modifiedCost.matches("[^0-9]") || Integer.parseInt(modifiedCost) < 0){
-                ErrorMessage("Error", "Please enter a valid cost number, remember only numbers and the cost must be greater or equal than 0.");
-                return;
-            }
-            if(modifiedSerial != InventoryList.get(index).getSerialNum() && RepetitionChecker(modifiedSerial) && matcher.find()) {
-                InventoryList.get(index).setSerialNum(modifiedSerial);
-            }
-            else if(!RepetitionChecker(modifiedSerial)){
-                ErrorMessage("Error", "This serial number already exists.");
-                return;
-            }
+        }
+        else if(!RepetitionChecker(modifiedSerial) && !modifiedSerial.isEmpty()) {
+            ErrorMessage("Error", "This serial number already exists.");
         }
 
-        Inventory.refresh();
+        else {
+            if (modifiedName != InventoryList.get(index).getItem_Name() && !modifiedName.isEmpty()) {
+                InventoryList.get(index).setItem_Name(modifiedName);
+            }
 
-        Item_Field.clear();
-        Cost_Field.clear();
-        SerialNum_Field.clear();
-    }
+            if (modifiedCost != InventoryList.get(index).getValue()  && !modifiedCost.isEmpty()){
+                InventoryList.get(index).setValue("$" + modifiedCost);
+
+
+            }
+
+            if (modifiedSerial != InventoryList.get(index).getSerialNum() && !modifiedSerial.isEmpty()) {
+                InventoryList.get(index).setSerialNum(modifiedSerial);
+            }
+            }
+
+            Inventory.refresh();
+
+            Item_Field.clear();
+            Cost_Field.clear();
+            SerialNum_Field.clear();
+
+            Inventory.getSelectionModel().clearSelection();
+            return;
+        }
+
+
 
 
 
@@ -307,7 +289,7 @@ public class Controller implements Initializable {
                 BW.printf("<html>");
                 BW.printf("<body>");
                 BW.printf("<h1 align = center> Inventory List </h1>");
-                BW.printf("<table align = center border = 1 style = background-color:#e0e0e0 cellpadding = 5 cellspacing = 5>");
+                BW.printf("<table align = center border = 1 style = background-color:#ffc0cb cellpadding = 5 cellspacing = 5>");
 
 
                 BW.printf("<tr><th><font size = 5 >Price</th><th><font size = 5 >Serial Number</th><th><font size = 5 >Name</th><tr>");
@@ -395,7 +377,7 @@ public class Controller implements Initializable {
         else if(fileChooser.getSelectedExtensionFilter().getDescription().equals("JSON")){
             InventoryList.clear();
             Gson gson = new Gson();
-            Helper parse = gson.fromJson(reader,Helper.class); 
+            Helper parse = gson.fromJson(reader,Helper.class);
             System.out.println(parse.getDescriptor().size());
 
         }//Working
@@ -453,7 +435,10 @@ public class Controller implements Initializable {
         }
         Item_Search.clear();
         return;
+
     }
+
+
 
 }
 

@@ -20,7 +20,9 @@ public class Item implements Serializable {
     }
 
     public Item(){
-
+        Item_Name = null;
+        Value = null;
+        SerialNum = null;
     }
 
     public String getItem_Name() {
@@ -28,7 +30,7 @@ public class Item implements Serializable {
     }
 
     public void setItem_Name(String item_Name) {
-        Item_Name = item_Name;
+        this.Item_Name = item_Name;
     }
 
     public String getValue() {
@@ -36,7 +38,7 @@ public class Item implements Serializable {
     }
 
     public void setValue(String value) {
-        Value = value;
+        this.Value = value;
     }
 
     public String getSerialNum() {
@@ -44,7 +46,7 @@ public class Item implements Serializable {
     }
 
     public void setSerialNum(String serialNum) {
-        SerialNum = serialNum;
+        this.SerialNum = serialNum;
     }
 
 
